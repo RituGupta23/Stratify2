@@ -3,6 +3,10 @@
 ## Overview
 A comprehensive project management system that streamlines workflow optimization, task allocation, and project planning. This tool helps teams collaborate efficiently by automatically matching skills to tasks and providing AI-driven insights for better project execution.
 
+## 📽 Demo Video
+
+[![Watch the demo](./frontend/src/assets/ThumnailStratify.jpg)](https://www.youtube.com/watch?v=gJzOQbdjUrI)
+
 ## ✨ Key Features
 - **Strategic Planning**: Create and manage detailed project plans with clear goals and realistic deadlines
 - **Intelligent Task Allocation**: Automatically assigns tasks based on team members' skills, workload, and availability
