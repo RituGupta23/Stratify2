@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
 from strategic_planning import StrategicPlanning
 from task_allocation import TaskAllocation
 from team_structuring import TeamStructuring
@@ -9,7 +10,9 @@ import os
 import traceback  # Added for detailed error tracking
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})  # Enable CORS for frontend requests
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")  # fallback
+
+CORS(app, resources={r"/*": {"origins": frontend_origin}}) # Enable CORS for frontend requests
 
 # Initialize modules
 strategic_planning = StrategicPlanning()
@@ -39,7 +42,8 @@ def plan_project():
         consensus = multi_agent.get_consensus(
             project_name=data.get("project_name", "Unnamed Project"),
             goals=data.get("goals", []),
-            team_members=data.get("team_members", [])
+            team_members=data.get("team_members", []),
+            tasks=data.get("tasks", {}),
         )
         print("DEBUG: Multi-Agent Consensus ->", consensus)
 
